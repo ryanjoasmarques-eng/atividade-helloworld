@@ -1,0 +1,101 @@
+
+@'
+#include <stdio.h>
+
+int main() {
+    float consumo, soma = 0, media;
+
+    for (int i = 1; i <= 5; i++) {
+        printf("Consumo do morador %d: ", i);
+        scanf("%f", &consumo);
+        soma += consumo;
+
+        if (consumo <= 20)
+            printf("Consumo dentro da media.\n");
+        else
+            printf("Consumo acima da media.\n");
+    }
+
+    media = soma / 5;
+    printf("Media geral: %.2f m3\n", media);
+    return 0;
+}
+'@ | Set-Content exercicio1.c -Encoding Ascii
+
+@'
+#include <stdio.h>
+
+int main() {
+    int opcao;
+    float saldo = 0;
+
+    do {
+        printf("\n1 - Adicionar R$ 0,50\n");
+        printf("2 - Adicionar R$ 1,00\n");
+        printf("3 - Adicionar R$ 2,00\n");
+        printf("0 - Encerrar\n");
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1)
+            saldo += 0.50;
+        else if (opcao == 2)
+            saldo += 1.00;
+        else if (opcao == 3)
+            saldo += 2.00;
+        else if (opcao != 0)
+            printf("Opcao invalida!\n");
+
+    } while (opcao != 0);
+
+    printf("Total acumulado: R$ %.2f\n", saldo);
+    return 0;
+}
+'@ | Set-Content exercicio2.c -Encoding Ascii
+
+@'
+#include <stdio.h>
+
+int main() {
+    float nota, soma = 0, media;
+
+    for (int i = 1; i <= 10; i++) {
+        printf("Nota do cliente %d (0 a 10): ", i);
+        scanf("%f", &nota);
+        soma += nota;
+    }
+
+    media = soma / 10;
+    printf("Media geral: %.2f\n", media);
+
+    if (media < 7)
+        printf("ALERTA: Media de atendimento baixa!\n");
+    else
+        printf("Media de atendimento satisfatoria.\n");
+
+    return 0;
+}
+'@ | Set-Content exercicio3.c -Encoding Ascii
+
+@'
+#include <stdio.h>
+
+int main() {
+    int passos, total = 0, horas = 0;
+
+    while (total < 10000) {
+        printf("Passos dados nesta hora: ");
+        scanf("%d", &passos);
+        total += passos;
+        horas++;
+    }
+
+    printf("Total de passos: %d\n", total);
+    printf("Horas necessarias: %d\n", horas);
+    return 0;
+}
+'@ | Set-Content exercicio4.c -Encoding Ascii
+
+git add exercicio1.c exercicio2.c exercicio3.c exercicio4.c
+git commit -m "Adiciona quatro exercicios em C"
+git push origin main
