@@ -94,8 +94,5 @@ int main() {
     printf("Horas necessarias: %d\n", horas);
     return 0;
 }
-'@ | Set-Content exercicio4.c -Encoding Ascii
 
-git add exercicio1.c exercicio2.c exercicio3.c exercicio4.c
-git commit -m "Adiciona quatro exercicios em C"
-git push origin main
+'@ | Set-Content exercicio4.c -Encoding Ascii
