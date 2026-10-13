@@ -94,5 +94,7 @@ int main() {
     printf("Horas necessarias: %d\n", horas);
     return 0;
 }
-
 '@ | Set-Content exercicio4.c -Encoding Ascii
+
+
+
