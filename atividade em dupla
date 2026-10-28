@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+#define MAX 10
+
+char nomes[MAX][50];
+float precos[MAX];
+int quantidades[MAX];
+int total=0;
+
+void cadastrarProdutos(){
+    int i,qtd;
+
+    if(total>=MAX){
+        printf("nao cabe mais!\n");
+        return;
+    }
+
+    printf("Quantos produtos quer cadastrar? (restam %d vagas): ",MAX-total);
+    scanf("%d",&qtd);
+
+    if(qtd<=0 || qtd>MAX-total){
+        printf("Quantidade invalida!\n");
+        return;
+    }
+
+
+
+    for(i=0;i<qtd;i++){
+        printf("\n--- Produto %d ---\n",total+1);
+
+        printf("Nome (sem espaco): ");
+        scanf("%s",nomes[total]);
+
+        printf("Preco unitario: ");
+        scanf("%f",&precos[total]);
+
+        printf("Quantidade em estoque: ");
+        scanf("%d",&quantidades[total]);
+
+        while(quantidades[total]<0){
+            printf("Nao pode ser negativo, digite de novo: ");
+            scanf("%d",&quantidades[total]);
+        }
+        total++;
+    }
+    printf("\nProdutos cadastrados!\n");
+}
+
+
+
+float valorTotalEstoque(){
+    int i;
+    float soma=0;
+    for(i=0;i<total;i++){
+        soma=soma+precos[i]*quantidades[i];
+    }
+    return soma;
+}
+
+void consultarEstoque()
+{
+    int i;
+
+    if(total==0){
+        printf("Nenhum produto cadastrado ainda.\n");
+        return;
+    }
+
+
+
+    printf("\n---- ESTOQUE ----\n");
+    for(i=0;i<total;i++){
+        printf("Codigo %d  Nome: %s  Preco: R$ %.2f  Quantidade: %d\n",i+1,nomes[i],precos[i],quantidades[i]);
+    }
+
+    printf("\nValor total do estoque: R$ %.2f\n",valorTotalEstoque());
+}
